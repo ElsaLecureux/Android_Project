@@ -23,7 +23,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Article article;
 
-    private Article[] articles;
+    private ArrayList<Article> articles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("articles");
                             for (int i = 0; i < jsonArray.length(); i++)
                             {
-                                article = new Article;
+                                article = new Article();
                                 JSONObject jSonArticle = jsonArray.getJSONObject(i);
                                 String titleJson =  jSonArticle.getString("title");
                                 article.setTitle(titleJson);
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                                 article.setTitle(urlImageJson);
                                 String publicationJson =  jSonArticle.getString("publication");
                                 article.setTitle(publicationJson);
-                                articles[i] = article;
+                                articles.add(article);
                             }
 
                         } catch (JSONException e) {
